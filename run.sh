@@ -1,0 +1,14 @@
+deepspeed --master_port=24999 train_ds.py \
+  --version="/data/vjuicefs_sz_cv_v2/11165695/projects/LLaVA/checkpoints/llava-phi2-lora-v2/merged" \
+  --vision-tower "/data/vjuicefs_sz_cv_v2/public_data/hf_ckpt/openai/clip-vit-large-patch14"    \
+  --vision_pretrained="/data/vjuicefs_sz_cv_v2/public_data/sam_ckpt/sam_vit_h_4b8939.pth" \
+  --batch_size 8  \
+  --precision fp16  \
+  --dataset_dir="/data/vjuicefs_sz_cv_v2/public_data/"  \
+  --dataset="sem_seg||refer_seg||vqa||reason_seg" \
+  --sem_seg_data="ade20k||cocostuff||pascal_part||paco_lvis" \
+  --sample_rates="7,3,3,1" \
+  --exp_name="lisa-phi-ftv2"  \
+  --lr 2e-5 \
+  --grad_accumulation_steps 5  \
+  --conv_type phi2  \
